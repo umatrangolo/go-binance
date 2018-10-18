@@ -30,7 +30,7 @@ func (as *apiService) Time() (time.Time, error) {
 	}
 	defer res.Body.Close()
 	var rawTime struct {
-		ServerTime string `json:"serverTime"`
+		ServerTime int64 `json:"serverTime"`
 	}
 	if err := json.Unmarshal(textRes, &rawTime); err != nil {
 		return time.Time{}, errors.Wrap(err, "timeResponse unmarshal failed")
